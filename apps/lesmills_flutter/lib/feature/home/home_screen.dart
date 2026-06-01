@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-import '../../components/app_bottom_nav_bar/app_bottom_nav_bar.dart';
 import '../../components/link_card/link_card.dart';
 import '../../l10n/app_strings.dart';
 import '../../theme/app_spacing.dart';
@@ -11,10 +10,11 @@ import 'widgets/group_fitness_section.dart';
 import 'widgets/home_hero_header.dart';
 import 'widgets/in_motion_section.dart';
 
-/// The Home dashboard — the member's landing screen. Renders the [HomeState]
-/// passed in (defaulting to loaded sample data) and owns only the local
-/// bottom-navigation selection.
-class HomeScreen extends StatefulWidget {
+/// The Home dashboard — the member's landing tab. Renders the [HomeState]
+/// passed in (defaulting to loaded sample data). The persistent bottom
+/// navigation is owned by the surrounding `AppShell`, so this screen is a pure
+/// tab body.
+class HomeScreen extends StatelessWidget {
   const HomeScreen({
     super.key,
     this.initialState = HomeStubs.loadedState,
@@ -25,16 +25,9 @@ class HomeScreen extends StatefulWidget {
   final VoidCallback? onRetry;
 
   @override
-  State<HomeScreen> createState() => _HomeScreenState();
-}
-
-class _HomeScreenState extends State<HomeScreen> {
-  AppTab _currentTab = AppTab.home;
-
-  @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: switch (widget.initialState) {
+      body: switch (initialState) {
         HomeIdle() || HomeLoading() => const _HomeSkeleton(),
         HomeEmpty() => const _HomeMessage(
             title: AppStrings.homeEmptyTitle,
@@ -43,14 +36,10 @@ class _HomeScreenState extends State<HomeScreen> {
         HomeError(:final message) => _HomeMessage(
             title: message,
             body: AppStrings.homeLoadErrorBody,
-            onRetry: widget.onRetry,
+            onRetry: onRetry,
           ),
         HomeLoaded(:final data) => _HomeContent(data: data),
       },
-      bottomNavigationBar: AppBottomNavBar(
-        currentTab: _currentTab,
-        onTabSelected: (tab) => setState(() => _currentTab = tab),
-      ),
     );
   }
 }

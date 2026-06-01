@@ -100,7 +100,9 @@ class _TimetableTile extends StatelessWidget {
                     ),
                     const SizedBox(height: AppSpacing.s3),
                     Icon(
-                      Icons.arrow_forward,
+                      Directionality.of(context) == TextDirection.rtl
+                          ? Icons.arrow_back
+                          : Icons.arrow_forward,
                       color: theme.colorScheme.onSurface,
                     ),
                   ],

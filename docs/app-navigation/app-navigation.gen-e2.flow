@@ -1,0 +1,242 @@
+{
+  "meta": {
+    "id": "app-navigation",
+    "title": "App Navigation — Splash to Tabbed Shell",
+    "version": "v1.0",
+    "description": "Cold-start launch flow: the member sees the Les Mills splash screen while the app initialises, then lands on the main shell with a persistent five-tab bottom navigation (Home, Progress, Timetable, Explore, Profile). Home is the default tab.",
+    "tags": ["navigation", "splash", "bottom-nav", "shell", "les-mills"],
+    "defaultActor": "member"
+  },
+  "actors": [
+    { "id": "member", "label": "Member" },
+    { "id": "system", "label": "System" }
+  ],
+  "nodes": [
+    {
+      "id": "start",
+      "type": "start",
+      "label": "Launch app (cold start)",
+      "actor": "member",
+      "priority": "high",
+      "isPrimary": true
+    },
+    {
+      "id": "splash",
+      "type": "action",
+      "label": "Display splash screen (Les Mills branding)",
+      "actor": "system",
+      "priority": "high",
+      "isPrimary": true,
+      "notes": "Full-screen branded splash on a black background with the Les Mills wordmark centred. Shown once on cold start while the app boots; it is not part of the tab navigation.",
+      "sourceRef": [
+        { "file": "Figma — Splash frame", "selector": "node-id 13301-28719" }
+      ]
+    },
+    {
+      "id": "init",
+      "type": "action",
+      "label": "Restore session & preload shell data",
+      "actor": "system",
+      "priority": "high",
+      "isPrimary": true,
+      "notes": "Restores the member session and warms the default Home tab data so the shell renders without a blank first frame. A minimum splash duration avoids a flash on fast boots."
+    },
+    {
+      "id": "init-ok",
+      "type": "decision",
+      "label": "App ready?",
+      "actor": "system",
+      "priority": "high"
+    },
+    {
+      "id": "show-error",
+      "type": "action",
+      "label": "Show launch error with Retry",
+      "actor": "system",
+      "priority": "medium",
+      "notes": "Initialisation failed (no network / session refresh failed). Presents a friendly message and a Retry action that re-runs initialisation."
+    },
+    {
+      "id": "main-shell",
+      "type": "action",
+      "label": "Render main shell — persistent bottom tab bar, default Home tab",
+      "actor": "system",
+      "priority": "high",
+      "isPrimary": true,
+      "notes": "Five-tab bottom navigation: Home, Progress, Timetable, Explore, Profile. The tab bar persists across all tabs; selecting a tab swaps the body while keeping each tab's scroll position. Home is selected on first render.",
+      "refs": {
+        "designSystem": ["AppBottomNavBar"],
+        "a11yCriteria": ["2.5.5 Target Size", "1.4.3 Contrast", "4.1.2 Name, Role, Value"]
+      }
+    },
+    {
+      "id": "tab-hub",
+      "type": "decision",
+      "label": "Member selects a tab",
+      "actor": "member",
+      "priority": "high",
+      "isPrimary": true
+    },
+    {
+      "id": "home-tab",
+      "type": "subflow",
+      "label": "Home tab",
+      "actor": "member",
+      "priority": "high",
+      "isPrimary": true,
+      "notes": "Default landing tab — activity dashboard and entry points into the rest of the app.",
+      "data": { "subflowRef": "../home/home.gen-e2.flow" },
+      "sourceRef": [
+        { "file": "Figma — Home frame", "selector": "node-id 13301-27856" }
+      ]
+    },
+    {
+      "id": "progress-tab",
+      "type": "end",
+      "label": "Progress tab",
+      "actor": "member",
+      "notes": "Multi-week summary, streaks, badges earned, next-to-unlock progress, and workout tips.",
+      "sourceRef": [
+        { "file": "Figma — Progress frame", "selector": "node-id 13301-27981" }
+      ]
+    },
+    {
+      "id": "timetable-tab",
+      "type": "end",
+      "label": "Timetable tab",
+      "actor": "member",
+      "notes": "Club timetable / My bookings toggle, location and date selectors, time-of-day filter, and bookable class list.",
+      "sourceRef": [
+        { "file": "Figma — Timetable frame", "selector": "node-id 13301-27537" }
+      ]
+    },
+    {
+      "id": "explore-tab",
+      "type": "end",
+      "label": "Explore tab",
+      "actor": "member",
+      "notes": "Discovery hub — personal training, Les Mills at Home, classes, collections, group fitness, and club details.",
+      "sourceRef": [
+        { "file": "Figma — Explore frame", "selector": "node-id 13301-27411" }
+      ]
+    },
+    {
+      "id": "profile-tab",
+      "type": "end",
+      "label": "Profile tab",
+      "actor": "member",
+      "notes": "App settings and membership management, app version, and log out.",
+      "sourceRef": [
+        { "file": "Figma — Profile frame", "selector": "node-id 13301-28482" }
+      ]
+    },
+    {
+      "id": "note-shell",
+      "type": "note",
+      "label": "Shell behaviour — Splash appears once on cold start only. The bottom tab bar is persistent across all five tabs; switching tabs swaps the body and preserves each tab's scroll state. Re-tapping the active tab scrolls it to top.",
+      "data": { "color": "blue", "width": 250, "height": 160 }
+    }
+  ],
+  "edges": [
+    {
+      "from": "start",
+      "to": "splash",
+      "kind": "normal",
+      "priority": "main",
+      "sourceHandle": "bottom",
+      "targetHandle": "top"
+    },
+    {
+      "from": "splash",
+      "to": "init",
+      "kind": "normal",
+      "priority": "main",
+      "sourceHandle": "bottom",
+      "targetHandle": "top"
+    },
+    {
+      "from": "init",
+      "to": "init-ok",
+      "kind": "normal",
+      "priority": "main",
+      "sourceHandle": "bottom",
+      "targetHandle": "top"
+    },
+    {
+      "from": "init-ok",
+      "to": "main-shell",
+      "label": "Ready",
+      "kind": "success",
+      "priority": "main",
+      "sourceHandle": "bottom",
+      "targetHandle": "top"
+    },
+    {
+      "from": "init-ok",
+      "to": "show-error",
+      "label": "Failed / offline",
+      "kind": "error",
+      "priority": "alt",
+      "sourceHandle": "right",
+      "targetHandle": "left"
+    },
+    {
+      "from": "show-error",
+      "to": "init",
+      "label": "Retry",
+      "kind": "error",
+      "priority": "alt",
+      "sourceHandle": "top",
+      "targetHandle": "left"
+    },
+    {
+      "from": "main-shell",
+      "to": "tab-hub",
+      "kind": "normal",
+      "priority": "main",
+      "sourceHandle": "bottom",
+      "targetHandle": "top"
+    },
+    {
+      "from": "tab-hub",
+      "to": "home-tab",
+      "label": "Home (default)",
+      "kind": "success",
+      "priority": "main",
+      "sourceHandle": "bottom",
+      "targetHandle": "top"
+    },
+    {
+      "from": "tab-hub",
+      "to": "progress-tab",
+      "label": "Progress",
+      "kind": "normal",
+      "sourceHandle": "bottom",
+      "targetHandle": "top"
+    },
+    {
+      "from": "tab-hub",
+      "to": "timetable-tab",
+      "label": "Timetable",
+      "kind": "normal",
+      "sourceHandle": "bottom",
+      "targetHandle": "top"
+    },
+    {
+      "from": "tab-hub",
+      "to": "explore-tab",
+      "label": "Explore",
+      "kind": "normal",
+      "sourceHandle": "bottom",
+      "targetHandle": "top"
+    },
+    {
+      "from": "tab-hub",
+      "to": "profile-tab",
+      "label": "Profile",
+      "kind": "normal",
+      "sourceHandle": "bottom",
+      "targetHandle": "top"
+    }
+  ]
+}

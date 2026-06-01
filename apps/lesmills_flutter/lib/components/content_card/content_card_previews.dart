@@ -1,19 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widget_previews.dart';
 
-import '../../theme/app_theme.dart';
+import '../../theme/preview_support.dart';
 import 'content_card.dart';
 import 'content_card_stubs.dart';
 
-@Preview(name: 'Loaded')
+@Preview(name: 'Loaded', size: phoneSize, theme: previewTheme)
 Widget contentCardLoaded() =>
     _wrap(ContentCard(model: ContentCardStubs.loaded, onTap: () {}));
 
-@Preview(name: 'Long content')
+@Preview(name: 'Long content', size: phoneSize, theme: previewTheme)
 Widget contentCardLongContent() =>
     _wrap(ContentCard(model: ContentCardStubs.longContent, onTap: () {}));
 
-@Preview(name: 'List')
+@Preview(name: 'List', size: phoneSize, theme: previewTheme)
 Widget contentCardList() => _wrap(
       SizedBox(
         height: 260,
@@ -27,15 +27,25 @@ Widget contentCardList() => _wrap(
       ),
     );
 
-@Preview(name: 'Dark (contrast check)', brightness: Brightness.dark)
+@Preview(
+  name: 'Dark (contrast check)',
+  size: phoneSize,
+  theme: previewTheme,
+  brightness: Brightness.dark,
+)
 Widget contentCardDark() =>
     _wrap(ContentCard(model: ContentCardStubs.loaded, onTap: () {}));
 
-@Preview(name: 'Large text', textScaleFactor: 2.0)
+@Preview(
+  name: 'Large text',
+  size: phoneSize,
+  theme: previewTheme,
+  textScaleFactor: 2.0,
+)
 Widget contentCardLargeText() =>
     _wrap(ContentCard(model: ContentCardStubs.loaded, onTap: () {}));
 
-@Preview(name: 'RTL')
+@Preview(name: 'RTL', size: phoneSize, theme: previewTheme)
 Widget contentCardRtl() => _wrap(
       Directionality(
         textDirection: TextDirection.rtl,
@@ -43,12 +53,8 @@ Widget contentCardRtl() => _wrap(
       ),
     );
 
-Widget _wrap(Widget child) => MaterialApp(
-      debugShowCheckedModeBanner: false,
-      theme: AppTheme.light,
-      home: Scaffold(
-        body: Center(
-          child: Padding(padding: const EdgeInsets.all(16), child: child),
-        ),
+Widget _wrap(Widget child) => Scaffold(
+      body: Center(
+        child: Padding(padding: const EdgeInsets.all(16), child: child),
       ),
     );
