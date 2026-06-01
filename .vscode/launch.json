@@ -1,0 +1,25 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "lesmills_flutter (debug)",
+      "cwd": "apps/lesmills_flutter",
+      "request": "launch",
+      "type": "dart"
+    },
+    {
+      "name": "lesmills_flutter (profile)",
+      "cwd": "apps/lesmills_flutter",
+      "request": "launch",
+      "type": "dart",
+      "flutterMode": "profile"
+    },
+    {
+      "name": "lesmills_flutter (release)",
+      "cwd": "apps/lesmills_flutter",
+      "request": "launch",
+      "type": "dart",
+      "flutterMode": "release"
+    }
+  ]
+}

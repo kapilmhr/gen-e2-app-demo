@@ -1,0 +1,263 @@
+{
+  "meta": {
+    "id": "home-screen",
+    "title": "Home Screen",
+    "version": "v1.0",
+    "description": "Member opens the app and lands on the Home dashboard — a hub that surfaces activity awareness, content, and entry points into the rest of the app.",
+    "tags": ["home", "dashboard", "navigation", "les-mills"],
+    "defaultActor": "member"
+  },
+  "actors": [
+    { "id": "member", "label": "Member" },
+    { "id": "system", "label": "System" }
+  ],
+  "nodes": [
+    {
+      "id": "start",
+      "type": "start",
+      "label": "Open app / select Home tab",
+      "actor": "member",
+      "priority": "high",
+      "isPrimary": true
+    },
+    {
+      "id": "load-data",
+      "type": "action",
+      "label": "Load Home dashboard data",
+      "actor": "system",
+      "priority": "high",
+      "isPrimary": true,
+      "notes": "Fetches greeting, weekly activity summary, In Motion content, and Group Fitness classes. While loading, each section shows a skeleton placeholder rather than blocking the whole screen.",
+      "sourceRef": [
+        {
+          "file": "Figma — Home frame",
+          "selector": "node-id 13301-27856"
+        }
+      ]
+    },
+    {
+      "id": "load-ok",
+      "type": "decision",
+      "label": "Dashboard data loaded?",
+      "actor": "system",
+      "priority": "high"
+    },
+    {
+      "id": "show-error",
+      "type": "action",
+      "label": "Show error state with Retry",
+      "actor": "system",
+      "priority": "medium",
+      "notes": "Network/offline failure. Shows a friendly message and a Retry action. Any already-cached sections (e.g. last activity summary) may still render."
+    },
+    {
+      "id": "display-home",
+      "type": "action",
+      "label": "Render Home dashboard",
+      "actor": "system",
+      "priority": "high",
+      "isPrimary": true,
+      "notes": "Sections top→bottom: 1) Hero greeting + Scan in, 2) Activity summary (weekly streak) + View class bookings, 3) Link card (challenge), 4) In Motion content carousel, 5) Link card (refer a friend), 6) Explore Group Fitness class carousel + Timetable CTA, 7) Bottom tab bar.",
+      "refs": {
+        "designSystem": ["MetricCard", "LinkCard", "ClassCard", "BottomNavBar"],
+        "a11yCriteria": ["1.3.1 Info and Relationships", "2.5.5 Target Size", "1.4.3 Contrast"]
+      }
+    },
+    {
+      "id": "note-states",
+      "type": "note",
+      "label": "States — Loading: per-section skeletons. Empty activity (new member): activity card shows an encouragement CTA instead of a streak. Each carousel handles its own empty/error independently so one failure never blanks the page.",
+      "data": {
+        "color": "blue",
+        "width": 240,
+        "height": 150
+      }
+    },
+    {
+      "id": "hub",
+      "type": "decision",
+      "label": "Member selects an action",
+      "actor": "member",
+      "priority": "high",
+      "isPrimary": true
+    },
+    {
+      "id": "end-bookings",
+      "type": "end",
+      "label": "Class Bookings screen",
+      "actor": "member",
+      "priority": "high",
+      "isPrimary": true
+    },
+    {
+      "id": "end-scanin",
+      "type": "end",
+      "label": "Club check-in (QR scanner)",
+      "actor": "member"
+    },
+    {
+      "id": "end-challenge",
+      "type": "end",
+      "label": "Challenge detail",
+      "actor": "member"
+    },
+    {
+      "id": "end-article",
+      "type": "end",
+      "label": "In Motion article detail",
+      "actor": "member"
+    },
+    {
+      "id": "end-refer",
+      "type": "end",
+      "label": "Refer a friend (share sheet)",
+      "actor": "member"
+    },
+    {
+      "id": "end-class",
+      "type": "end",
+      "label": "Class detail",
+      "actor": "member"
+    },
+    {
+      "id": "end-timetable",
+      "type": "end",
+      "label": "Timetable tab",
+      "actor": "member"
+    },
+    {
+      "id": "end-tab",
+      "type": "end",
+      "label": "Progress / Explore / Profile tab",
+      "actor": "member"
+    }
+  ],
+  "edges": [
+    {
+      "from": "start",
+      "to": "load-data",
+      "kind": "normal",
+      "priority": "main",
+      "sourceHandle": "bottom",
+      "targetHandle": "top"
+    },
+    {
+      "from": "load-data",
+      "to": "load-ok",
+      "kind": "normal",
+      "priority": "main",
+      "sourceHandle": "bottom",
+      "targetHandle": "top"
+    },
+    {
+      "from": "load-ok",
+      "to": "display-home",
+      "label": "Loaded",
+      "kind": "success",
+      "priority": "main",
+      "sourceHandle": "bottom",
+      "targetHandle": "top"
+    },
+    {
+      "from": "load-ok",
+      "to": "show-error",
+      "label": "Failed / offline",
+      "kind": "error",
+      "priority": "alt",
+      "sourceHandle": "right",
+      "targetHandle": "left"
+    },
+    {
+      "from": "show-error",
+      "to": "load-data",
+      "label": "Retry",
+      "kind": "error",
+      "priority": "alt",
+      "sourceHandle": "top",
+      "targetHandle": "left"
+    },
+    {
+      "from": "display-home",
+      "to": "hub",
+      "kind": "normal",
+      "priority": "main",
+      "sourceHandle": "bottom",
+      "targetHandle": "top"
+    },
+    {
+      "from": "hub",
+      "to": "end-bookings",
+      "label": "View class bookings",
+      "kind": "success",
+      "priority": "main",
+      "sourceHandle": "bottom",
+      "targetHandle": "top"
+    },
+    {
+      "from": "hub",
+      "to": "end-scanin",
+      "label": "Scan in",
+      "kind": "normal",
+      "priority": "alt",
+      "sourceHandle": "bottom",
+      "targetHandle": "top"
+    },
+    {
+      "from": "hub",
+      "to": "end-challenge",
+      "label": "Explore challenge",
+      "kind": "normal",
+      "priority": "alt",
+      "sourceHandle": "bottom",
+      "targetHandle": "top"
+    },
+    {
+      "from": "hub",
+      "to": "end-article",
+      "label": "Open In Motion story",
+      "kind": "normal",
+      "priority": "alt",
+      "sourceHandle": "bottom",
+      "targetHandle": "top"
+    },
+    {
+      "from": "hub",
+      "to": "end-refer",
+      "label": "Share invite",
+      "kind": "normal",
+      "priority": "alt",
+      "sourceHandle": "bottom",
+      "targetHandle": "top"
+    },
+    {
+      "from": "hub",
+      "to": "end-class",
+      "label": "Tap a class card",
+      "kind": "normal",
+      "priority": "alt",
+      "sourceHandle": "bottom",
+      "targetHandle": "top"
+    },
+    {
+      "from": "hub",
+      "to": "end-timetable",
+      "label": "View Group Fitness Timetable",
+      "kind": "normal",
+      "priority": "alt",
+      "sourceHandle": "bottom",
+      "targetHandle": "top"
+    },
+    {
+      "from": "hub",
+      "to": "end-tab",
+      "label": "Select bottom tab",
+      "kind": "normal",
+      "priority": "alt",
+      "sourceHandle": "bottom",
+      "targetHandle": "top"
+    }
+  ],
+  "layout": {
+    "direction": "TB"
+  }
+}
