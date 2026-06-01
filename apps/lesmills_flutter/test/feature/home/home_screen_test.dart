@@ -43,18 +43,5 @@ void main() {
       await tester.tap(find.text('TRY AGAIN'));
       expect(retries, 1);
     });
-
-    testWidgets('switching tabs updates the navigation selection',
-        (tester) async {
-      await tester.pumpWidget(
-        _host(const HomeScreen(initialState: HomeStubs.loadedState)),
-      );
-      await tester.tap(find.text('Profile'));
-      await tester.pump();
-      final nav = tester.widget<BottomNavigationBar>(
-        find.byType(BottomNavigationBar),
-      );
-      expect(nav.currentIndex, 4);
-    });
   });
 }

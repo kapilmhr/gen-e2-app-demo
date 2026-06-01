@@ -7,20 +7,18 @@ import '../../../l10n/app_strings.dart';
 import '../../../theme/app_colors.dart';
 import '../../../theme/app_spacing.dart';
 
-/// "Explore Group Fitness" section: a header with description, a horizontally
-/// scrolling carousel of [ClassCard]s, and a trailing tile that links to the
-/// full timetable.
-class GroupFitnessSection extends StatelessWidget {
-  const GroupFitnessSection({
+/// Explore's "Group fitness" section: a header with description, a horizontally
+/// scrolling carousel of [ClassCard]s, and a trailing centred tile that links
+/// to the full timetable.
+class ExploreGroupFitnessSection extends StatelessWidget {
+  const ExploreGroupFitnessSection({
     super.key,
-    required this.description,
     required this.classes,
     this.onClassTap,
     this.onTimetable,
     this.cardHeight = 300,
   });
 
-  final String description;
   final List<ClassCardModel> classes;
   final ValueChanged<ClassCardModel>? onClassTap;
   final VoidCallback? onTimetable;
@@ -34,8 +32,8 @@ class GroupFitnessSection extends StatelessWidget {
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: AppSpacing.s5),
           child: SectionHeader(
-            title: AppStrings.groupFitnessTitle,
-            description: description,
+            title: AppStrings.exploreGroupFitnessTitle,
+            description: AppStrings.exploreGroupFitnessDescription,
           ),
         ),
         const SizedBox(height: AppSpacing.s4),
@@ -48,10 +46,7 @@ class GroupFitnessSection extends StatelessWidget {
             separatorBuilder: (_, _) => const SizedBox(width: AppSpacing.s4),
             itemBuilder: (context, index) {
               if (index == classes.length) {
-                return _TimetableTile(
-                  width: 200,
-                  onPressed: onTimetable,
-                );
+                return _TimetableTile(onPressed: onTimetable);
               }
               final item = classes[index];
               return ClassCard(
@@ -67,9 +62,8 @@ class GroupFitnessSection extends StatelessWidget {
 }
 
 class _TimetableTile extends StatelessWidget {
-  const _TimetableTile({required this.width, this.onPressed});
+  const _TimetableTile({this.onPressed});
 
-  final double width;
   final VoidCallback? onPressed;
 
   @override
@@ -78,10 +72,10 @@ class _TimetableTile extends StatelessWidget {
 
     return Semantics(
       button: onPressed != null,
-      label: AppStrings.groupFitnessTimetableCta,
+      label: AppStrings.exploreTimetableCta,
       child: ExcludeSemantics(
         child: SizedBox(
-          width: width,
+          width: 240,
           child: Material(
             color: AppColors.neutralBlue,
             borderRadius: BorderRadius.circular(AppSpacing.s2),
@@ -89,16 +83,16 @@ class _TimetableTile extends StatelessWidget {
             child: InkWell(
               onTap: onPressed,
               child: Padding(
-                padding: const EdgeInsets.all(AppSpacing.s4),
+                padding: const EdgeInsets.all(AppSpacing.s5),
                 child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  mainAxisAlignment: MainAxisAlignment.end,
+                  mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Text(
-                      AppStrings.groupFitnessTimetableCta,
+                      AppStrings.exploreTimetableCta.toUpperCase(),
+                      textAlign: TextAlign.center,
                       style: theme.textTheme.titleMedium,
                     ),
-                    const SizedBox(height: AppSpacing.s3),
+                    const SizedBox(height: AppSpacing.s4),
                     Icon(
                       Directionality.of(context) == TextDirection.rtl
                           ? Icons.arrow_back

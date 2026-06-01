@@ -37,6 +37,7 @@ class RemoteImage extends StatelessWidget {
       return Image.asset(
         assetPath!,
         fit: fit,
+        excludeFromSemantics: true,
         errorBuilder: (context, error, stackTrace) => placeholder,
       );
     }
@@ -48,6 +49,7 @@ class RemoteImage extends StatelessWidget {
     return Image.network(
       url!,
       fit: fit,
+      excludeFromSemantics: true,
       errorBuilder: (context, error, stackTrace) => placeholder,
       loadingBuilder: (context, child, progress) {
         if (progress == null) return child;

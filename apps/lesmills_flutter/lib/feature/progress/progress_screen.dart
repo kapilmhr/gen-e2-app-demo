@@ -1,96 +1,100 @@
 import 'package:flutter/material.dart';
 
-import '../../components/link_card/link_card.dart';
+import '../../components/page_header/page_header.dart';
+import '../../components/section_header/section_header.dart';
 import '../../l10n/app_strings.dart';
 import '../../theme/app_spacing.dart';
-import 'home_model.dart';
-import 'home_stubs.dart';
-import 'widgets/activity_summary_card.dart';
-import 'widgets/group_fitness_section.dart';
-import 'widgets/home_hero_header.dart';
-import 'widgets/in_motion_section.dart';
+import 'progress_model.dart';
+import 'progress_stubs.dart';
+import 'widgets/badges_section.dart';
+import 'widgets/streak_calendar_card.dart';
+import 'widgets/workout_tips_section.dart';
 
-/// The Home dashboard — the member's landing tab. Renders the [HomeState]
-/// passed in (defaulting to loaded sample data). The persistent bottom
-/// navigation is owned by the surrounding `AppShell`, so this screen is a pure
-/// tab body.
-class HomeScreen extends StatelessWidget {
-  const HomeScreen({
+/// The Progress tab — the member's streaks, badges and workout tips. Renders
+/// the [ProgressState] passed in (defaulting to loaded sample data). The
+/// persistent bottom navigation is owned by `AppShell`, so this screen is a
+/// pure tab body.
+class ProgressScreen extends StatelessWidget {
+  const ProgressScreen({
     super.key,
-    this.initialState = HomeStubs.loadedState,
+    this.initialState = ProgressStubs.loadedState,
     this.onRetry,
   });
 
-  final HomeState initialState;
+  final ProgressState initialState;
   final VoidCallback? onRetry;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: switch (initialState) {
-        HomeIdle() || HomeLoading() => const _HomeSkeleton(),
-        HomeEmpty() => const _HomeMessage(
-            title: AppStrings.homeEmptyTitle,
-            body: AppStrings.homeEmptyBody,
+        ProgressIdle() || ProgressLoading() => const _ProgressSkeleton(),
+        ProgressEmpty() => const _ProgressMessage(
+            title: AppStrings.progressEmptyTitle,
+            body: AppStrings.progressEmptyBody,
           ),
-        HomeError(:final message) => _HomeMessage(
+        ProgressError(:final message) => _ProgressMessage(
             title: message,
-            body: AppStrings.homeLoadErrorBody,
+            body: AppStrings.progressEmptyBody,
             onRetry: onRetry,
           ),
-        HomeLoaded(:final data) => _HomeContent(data: data),
+        ProgressLoaded(:final data) => _ProgressContent(data: data),
       },
     );
   }
 }
 
-class _HomeContent extends StatelessWidget {
-  const _HomeContent({required this.data});
+class _ProgressContent extends StatelessWidget {
+  const _ProgressContent({required this.data});
 
-  final HomeData data;
+  final ProgressData data;
 
   @override
   Widget build(BuildContext context) {
     return ListView(
       padding: EdgeInsets.zero,
       children: [
-        HomeHeroHeader(
-          memberName: data.memberName,
-          imageAsset: data.heroImageAsset,
-          imageUrl: data.heroImageUrl,
-          onScanIn: () {},
+        PageHeader(
+          title: AppStrings.progressTitle,
+          imageAsset: data.headerImageAsset,
+          imageUrl: data.headerImageUrl,
         ),
-        const SizedBox(height: AppSpacing.s6),
+        const SizedBox(height: AppSpacing.s5),
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: AppSpacing.s5),
-          child: ActivitySummaryCard(
-            message: data.activityMessage,
-            thisWeek: data.thisWeek,
-            lastWeek: data.lastWeek,
-            onViewBookings: () {},
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              SectionHeader(
+                title: AppStrings.progressSummaryTitle,
+                description: AppStrings.progressSummaryDescription,
+              ),
+              const SizedBox(height: AppSpacing.s5),
+              StreakCalendarCard(
+                dateRange: data.dateRange,
+                weeks: data.weeks,
+                lastWeekValue: data.lastWeekValue,
+                currentStreakValue: data.currentStreakValue,
+              ),
+              const SizedBox(height: AppSpacing.s5),
+              OutlinedButton(
+                onPressed: () {},
+                child: Text(AppStrings.progressViewWorkouts.toUpperCase()),
+              ),
+            ],
           ),
         ),
         const SizedBox(height: AppSpacing.s6),
-        Padding(
-          padding: const EdgeInsets.symmetric(horizontal: AppSpacing.s5),
-          child: LinkCard(model: data.challenge, onPressed: () {}),
+        BadgesSection(
+          badges: data.badges,
+          nextToUnlock: data.nextToUnlock,
+          onViewAll: () {},
+          onBadgeTap: (_) {},
         ),
         const SizedBox(height: AppSpacing.s6),
-        InMotionSection(
-          items: data.inMotion,
-          onCardTap: (_) {},
-        ),
-        const SizedBox(height: AppSpacing.s6),
-        Padding(
-          padding: const EdgeInsets.symmetric(horizontal: AppSpacing.s5),
-          child: LinkCard(model: data.referFriend, onPressed: () {}),
-        ),
-        const SizedBox(height: AppSpacing.s6),
-        GroupFitnessSection(
-          description: data.groupFitnessDescription,
-          classes: data.classes,
-          onClassTap: (_) {},
-          onTimetable: () {},
+        WorkoutTipsSection(
+          tips: data.tips,
+          onTipTap: (_) {},
         ),
         const SizedBox(height: AppSpacing.s7),
       ],
@@ -100,8 +104,8 @@ class _HomeContent extends StatelessWidget {
 
 /// Static (non-animated) skeleton — respects reduced-motion preferences by
 /// avoiding shimmer entirely.
-class _HomeSkeleton extends StatelessWidget {
-  const _HomeSkeleton();
+class _ProgressSkeleton extends StatelessWidget {
+  const _ProgressSkeleton();
 
   @override
   Widget build(BuildContext context) {
@@ -122,10 +126,10 @@ class _HomeSkeleton extends StatelessWidget {
         child: ListView(
           padding: const EdgeInsets.all(AppSpacing.s5),
           children: [
-            block(320),
+            block(120),
+            block(334),
+            block(150),
             block(180),
-            block(180),
-            block(260),
           ],
         ),
       ),
@@ -133,8 +137,8 @@ class _HomeSkeleton extends StatelessWidget {
   }
 }
 
-class _HomeMessage extends StatelessWidget {
-  const _HomeMessage({
+class _ProgressMessage extends StatelessWidget {
+  const _ProgressMessage({
     required this.title,
     required this.body,
     this.onRetry,
