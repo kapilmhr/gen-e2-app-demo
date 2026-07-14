@@ -32,6 +32,7 @@ class TimetableClassCard extends StatelessWidget {
               session.studio,
               session.instructor,
             ),
+      explicitChildNodes: true,
       child: Container(
         decoration: BoxDecoration(
           color: AppColors.lightGrey,
@@ -46,54 +47,50 @@ class TimetableClassCard extends StatelessWidget {
               children: [
                 SizedBox(
                   width: 74,
-                  child: ExcludeSemantics(
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          session.time.toUpperCase(),
-                          style: theme.textTheme.labelLarge,
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        session.time.toUpperCase(),
+                        style: theme.textTheme.labelLarge,
+                      ),
+                      Text(
+                        session.duration,
+                        style: theme.textTheme.bodySmall?.copyWith(
+                          color: AppColors.darkGrey,
                         ),
-                        Text(
-                          session.duration,
-                          style: theme.textTheme.bodySmall?.copyWith(
-                            color: AppColors.darkGrey,
-                          ),
-                        ),
-                      ],
-                    ),
+                      ),
+                    ],
                   ),
                 ),
                 const SizedBox(width: AppSpacing.s2),
                 Expanded(
-                  child: ExcludeSemantics(
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          session.name.toUpperCase(),
-                          style: theme.textTheme.labelLarge,
-                        ),
-                        const SizedBox(height: AppSpacing.s1),
-                        Wrap(
-                          spacing: AppSpacing.s2,
-                          children: [
-                            Text(
-                              session.studio,
-                              style: theme.textTheme.labelSmall?.copyWith(
-                                color: AppColors.darkGrey,
-                              ),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        session.name.toUpperCase(),
+                        style: theme.textTheme.labelLarge,
+                      ),
+                      const SizedBox(height: AppSpacing.s1),
+                      Wrap(
+                        spacing: AppSpacing.s2,
+                        children: [
+                          Text(
+                            session.studio,
+                            style: theme.textTheme.labelSmall?.copyWith(
+                              color: AppColors.darkGrey,
                             ),
-                            Text(
-                              session.instructor,
-                              style: theme.textTheme.bodySmall?.copyWith(
-                                color: AppColors.darkGrey,
-                              ),
+                          ),
+                          Text(
+                            session.instructor,
+                            style: theme.textTheme.bodySmall?.copyWith(
+                              color: AppColors.darkGrey,
                             ),
-                          ],
-                        ),
-                      ],
-                    ),
+                          ),
+                        ],
+                      ),
+                    ],
                   ),
                 ),
               ],
@@ -127,12 +124,10 @@ class _CtaRow extends StatelessWidget {
         if (session.availableCount != null)
           Padding(
             padding: const EdgeInsets.only(right: AppSpacing.s2),
-            child: ExcludeSemantics(
-              child: Text(
-                AppStrings.timetableAvailable(session.availableCount!),
-                style: theme.textTheme.bodySmall?.copyWith(
-                  color: AppColors.darkGrey,
-                ),
+            child: Text(
+              AppStrings.timetableAvailable(session.availableCount!),
+              style: theme.textTheme.bodySmall?.copyWith(
+                color: AppColors.darkGrey,
               ),
             ),
           ),
@@ -154,7 +149,7 @@ class _BookButton extends StatelessWidget {
 
     return Semantics(
       button: true,
-      label: AppStrings.a11yBookClass(session.name, session.time),
+      hint: AppStrings.a11yBookClass(session.name, session.time),
       child: Material(
         color: AppColors.white,
         borderRadius: BorderRadius.circular(AppSpacing.s2),
@@ -166,11 +161,9 @@ class _BookButton extends StatelessWidget {
               horizontal: AppSpacing.s4,
               vertical: AppSpacing.s2,
             ),
-            child: ExcludeSemantics(
-              child: Text(
-                AppStrings.timetableBookNow,
-                style: theme.textTheme.labelSmall,
-              ),
+            child: Text(
+              AppStrings.timetableBookNow,
+              style: theme.textTheme.labelSmall,
             ),
           ),
         ),
@@ -184,29 +177,27 @@ class _BookedChip extends StatelessWidget {
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
 
-    return ExcludeSemantics(
-      child: Container(
-        decoration: BoxDecoration(
-          color: AppColors.success,
-          borderRadius: BorderRadius.circular(AppSpacing.s2),
-        ),
-        padding: const EdgeInsets.symmetric(
-          horizontal: AppSpacing.s4,
-          vertical: AppSpacing.s2,
-        ),
-        child: Row(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            Text(
-              AppStrings.timetableBooked,
-              style: theme.textTheme.labelSmall?.copyWith(
-                color: AppColors.white,
-              ),
+    return Container(
+      decoration: BoxDecoration(
+        color: AppColors.success,
+        borderRadius: BorderRadius.circular(AppSpacing.s2),
+      ),
+      padding: const EdgeInsets.symmetric(
+        horizontal: AppSpacing.s4,
+        vertical: AppSpacing.s2,
+      ),
+      child: Row(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          Text(
+            AppStrings.timetableBooked,
+            style: theme.textTheme.labelSmall?.copyWith(
+              color: AppColors.white,
             ),
-            const SizedBox(width: AppSpacing.s2),
-            const Icon(Icons.check, size: 16, color: AppColors.white),
-          ],
-        ),
+          ),
+          const SizedBox(width: AppSpacing.s2),
+          const Icon(Icons.check, size: 16, color: AppColors.white),
+        ],
       ),
     );
   }

@@ -37,7 +37,7 @@ class AppBottomNavBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BottomNavigationBar(
+    final bar = BottomNavigationBar(
       currentIndex: currentTab.index,
       onTap: onTabSelected == null
           ? null
@@ -50,6 +50,33 @@ class AppBottomNavBar extends StatelessWidget {
             label: tab.label,
             tooltip: tab.label,
           ),
+      ],
+    );
+
+    // Flutter's BottomNavigationBar uses MergeSemantics internally, which
+    // produces labels like "Timetable\nTab 3 of 5". Maestro's tapOn:text:
+    // does an anchored regex match so "Timetable" won't match that string.
+    // Fix: exclude the bar's built-in semantics and overlay a Row of clean
+    // Semantics nodes — one per tab — each carrying only the plain label.
+    return Stack(
+      children: [
+        ExcludeSemantics(child: bar),
+        Positioned.fill(
+          child: Row(
+            children: [
+              for (final tab in AppTab.values)
+                Expanded(
+                  child: Semantics(
+                    label: tab.label,
+                    button: true,
+                    selected: currentTab == tab,
+                    onTap: onTabSelected == null ? null : () => onTabSelected!(tab),
+                    child: const SizedBox.expand(),
+                  ),
+                ),
+            ],
+          ),
+        ),
       ],
     );
   }

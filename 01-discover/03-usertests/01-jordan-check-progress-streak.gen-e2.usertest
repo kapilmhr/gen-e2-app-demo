@@ -1,0 +1,62 @@
+{
+  "meta": {
+    "name": "Jordan checks their progress streak and badges",
+    "title": "Can a committed member quickly find meaningful evidence of their progress after a training session?",
+    "summary": "Jordan has just completed a Wednesday morning BodyPump session and opens the app to check whether their streak updated and see how close they are to unlocking their next achievement badge. This test observes whether the Progress tab surfaces actionable, motivating progress data quickly enough to reinforce the habit loop — or whether the information feels disconnected and hard to interpret.",
+    "owner": "Product Team",
+    "date": "2026-07-14",
+    "version": "v1.0",
+    "status": "draft"
+  },
+  "inputs": {
+    "personaRef": "../../01-discover/02-personas/01-active-member.gen-e2.persona",
+    "scenario": {
+      "goal": "You've just finished your Wednesday morning class. Open the app and find out whether your weekly streak is still intact and how close you are to earning your next badge — all within 30 seconds.",
+      "successHints": [
+        "A streak calendar or week summary is visible showing this week's activity",
+        "A badge progress indicator (e.g. '42/50 club visits') is visible",
+        "Jordan can read their current streak count without tapping into a sub-screen"
+      ]
+    },
+    "context": {
+      "references": [
+        "../../01-discover/02-personas/01-active-member.gen-e2.persona",
+        "../../docs/progress/progress.gen-e2.story.md"
+      ]
+    }
+  },
+  "target": {
+    "kind": "flutter",
+    "appId": "com.example.lesmillsFlutter",
+    "platform": "ios",
+    "projectRoot": "../../apps/lesmills_flutter"
+  },
+  "runner": {
+    "kind": "maestro",
+    "options": {
+      "stepCap": 25,
+      "timeoutMs": 300000
+    }
+  },
+  "runs": [
+    {
+      "id": "1784012012727-manual",
+      "label": "Run 1",
+      "personaRef": "../02-personas/01-active-member.gen-e2.persona",
+      "recording": {
+        "startedAt": "2026-07-14T07:06:00.862Z",
+        "endedAt": "2026-07-14T07:06:25.901Z",
+        "outcome": "succeeded",
+        "transcriptUri": "../../.gen-e2/usertests/1784012760861-01-jordan-check-progress-streak/transcript.jsonl",
+        "framesDir": "../../.gen-e2/usertests/1784012760861-01-jordan-check-progress-streak/frames"
+      }
+    }
+  ],
+  "recording": {
+    "startedAt": "2026-07-14T07:06:00.862Z",
+    "endedAt": "2026-07-14T07:06:25.901Z",
+    "outcome": "succeeded",
+    "transcriptUri": "../../.gen-e2/usertests/1784012760861-01-jordan-check-progress-streak/transcript.jsonl",
+    "framesDir": "../../.gen-e2/usertests/1784012760861-01-jordan-check-progress-streak/frames"
+  }
+}

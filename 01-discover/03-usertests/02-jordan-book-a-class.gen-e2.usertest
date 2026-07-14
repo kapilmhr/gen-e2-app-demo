@@ -1,0 +1,259 @@
+{
+  "meta": {
+    "name": "Jordan books a morning class from the timetable",
+    "title": ">",
+    "summary": "Jordan opens the app. They navigate to the Timetable tab and attempt to book any available morning class. This test observes whether the timetable surfaces the right information at a glance, whether the booking CTA is discoverable, and whether confirmation is clear enough to build confidence that the booking was made.",
+    "owner": "Product Team",
+    "date": "2026-07-14",
+    "version": "v1.0",
+    "status": "active"
+  },
+  "inputs": {
+    "personaRef": "../../01-discover/02-personas/01-active-member.gen-e2.persona",
+    "scenario": {
+      "goal": "Open the app, go to the Timetable tab which defaults to Monday 20 with the Morning filter active, tap the Book CTA on the first available class shown, and confirm the booking — all within 60 seconds.",
+      "successHints": [
+        "The Timetable tab is accessible from the bottom navigation without extra taps",
+        "Monday 20 is the default selected day — no date navigation required",
+        "The Morning filter is already active, showing classes from 7:15am through 11:30am",
+        "Tapping any Book CTA on the first visible class card opens a confirmation sheet titled 'Confirm booking'; tapping the 'Confirm' button completes the booking"
+      ]
+    },
+    "context": {
+      "references": [
+        "../../01-discover/02-personas/01-active-member.gen-e2.persona",
+        "../../docs/timetable/timetable.gen-e2.story.md"
+      ]
+    }
+  },
+  "target": {
+    "kind": "flutter",
+    "appId": "com.example.lesmillsFlutter",
+    "platform": "ios",
+    "projectRoot": "../../apps/lesmills_flutter"
+  },
+  "runner": {
+    "kind": "maestro",
+    "options": {
+      "stepCap": 30,
+      "timeoutMs": 300000
+    }
+  },
+  "runs": [
+    {
+      "id": "1784019810921-manual",
+      "label": "Run 4",
+      "personaRef": "../02-personas/01-active-member.gen-e2.persona",
+      "recording": {
+        "startedAt": "2026-07-14T09:57:46.312Z",
+        "endedAt": "2026-07-14T09:58:36.400Z",
+        "outcome": "succeeded",
+        "transcriptUri": "../../.gen-e2/usertests/1784023066311-02-jordan-book-a-class/transcript.jsonl",
+        "framesDir": "../../.gen-e2/usertests/1784023066311-02-jordan-book-a-class/frames"
+      }
+    },
+    {
+      "id": "1784023124521-manual",
+      "label": "Run 5",
+      "personaRef": "../02-personas/01-active-member.gen-e2.persona",
+      "recording": {
+        "startedAt": "2026-07-14T09:58:55.033Z",
+        "endedAt": "2026-07-14T09:59:40.931Z",
+        "outcome": "succeeded",
+        "transcriptUri": "../../.gen-e2/usertests/1784023135032-02-jordan-book-a-class/transcript.jsonl",
+        "framesDir": "../../.gen-e2/usertests/1784023135032-02-jordan-book-a-class/frames"
+      }
+    },
+    {
+      "id": "1784023386088-manual",
+      "label": "Run 3",
+      "personaRef": "../02-personas/01-active-member.gen-e2.persona",
+      "recording": {
+        "startedAt": "2026-07-14T10:03:13.046Z",
+        "endedAt": "2026-07-14T10:03:59.600Z",
+        "outcome": "succeeded",
+        "transcriptUri": "../../.gen-e2/usertests/1784023393046-02-jordan-book-a-class/transcript.jsonl",
+        "framesDir": "../../.gen-e2/usertests/1784023393046-02-jordan-book-a-class/frames"
+      }
+    },
+    {
+      "id": "1784023470872-manual",
+      "label": "Run 4",
+      "personaRef": "../02-personas/01-active-member.gen-e2.persona",
+      "recording": {
+        "startedAt": "2026-07-14T22:06:33.224Z",
+        "endedAt": "2026-07-14T22:07:15.519Z",
+        "outcome": "succeeded",
+        "transcriptUri": "../../.gen-e2/usertests/1784066793223-02-jordan-book-a-class/transcript.jsonl",
+        "framesDir": "../../.gen-e2/usertests/1784066793223-02-jordan-book-a-class/frames"
+      }
+    },
+    {
+      "id": "1784023875681-manual",
+      "label": "Run 5",
+      "personaRef": "../02-personas/01-active-member.gen-e2.persona",
+      "recording": {
+        "startedAt": "2026-07-14T10:11:21.805Z",
+        "endedAt": "2026-07-14T10:12:11.910Z",
+        "outcome": "succeeded",
+        "transcriptUri": "../../.gen-e2/usertests/1784023881804-02-jordan-book-a-class/transcript.jsonl",
+        "framesDir": "../../.gen-e2/usertests/1784023881804-02-jordan-book-a-class/frames"
+      }
+    },
+    {
+      "id": "1784023942631-manual",
+      "label": "Run 6",
+      "personaRef": "../02-personas/01-active-member.gen-e2.persona"
+    },
+    {
+      "id": "1784024055238-manual",
+      "label": "Run 7",
+      "personaRef": "../02-personas/01-active-member.gen-e2.persona",
+      "recording": {
+        "startedAt": "2026-07-14T10:14:20.653Z",
+        "endedAt": "2026-07-14T10:15:08.282Z",
+        "outcome": "succeeded",
+        "transcriptUri": "../../.gen-e2/usertests/1784024060652-02-jordan-book-a-class/transcript.jsonl",
+        "framesDir": "../../.gen-e2/usertests/1784024060652-02-jordan-book-a-class/frames"
+      }
+    },
+    {
+      "id": "1784024114393-manual",
+      "label": "Run 8",
+      "personaRef": "../02-personas/01-active-member.gen-e2.persona"
+    },
+    {
+      "id": "1784064818653-manual",
+      "label": "Run 9",
+      "personaRef": "../02-personas/01-active-member.gen-e2.persona",
+      "recording": {
+        "startedAt": "2026-07-14T21:51:05.877Z",
+        "endedAt": "2026-07-14T21:51:38.498Z",
+        "outcome": "succeeded",
+        "transcriptUri": "../../.gen-e2/usertests/1784065865876-02-jordan-book-a-class/transcript.jsonl",
+        "framesDir": "../../.gen-e2/usertests/1784065865876-02-jordan-book-a-class/frames"
+      }
+    },
+    {
+      "id": "1784065910615-manual",
+      "label": "Run 10",
+      "personaRef": "../02-personas/01-active-member.gen-e2.persona"
+    },
+    {
+      "id": "1784066002846-manual",
+      "label": "Run 11",
+      "personaRef": "../02-personas/01-active-member.gen-e2.persona"
+    },
+    {
+      "id": "1784066148443-manual",
+      "label": "Run 12",
+      "personaRef": "../02-personas/01-active-member.gen-e2.persona"
+    },
+    {
+      "id": "1784066224143-manual",
+      "label": "Run 13",
+      "personaRef": "../02-personas/01-active-member.gen-e2.persona",
+      "recording": {
+        "startedAt": "2026-07-14T21:57:12.775Z",
+        "endedAt": "2026-07-14T21:57:56.015Z",
+        "outcome": "succeeded",
+        "transcriptUri": "../../.gen-e2/usertests/1784066232775-02-jordan-book-a-class/transcript.jsonl",
+        "framesDir": "../../.gen-e2/usertests/1784066232775-02-jordan-book-a-class/frames"
+      }
+    },
+    {
+      "id": "1784066362190-manual",
+      "label": "Run 14",
+      "personaRef": "../02-personas/01-active-member.gen-e2.persona"
+    },
+    {
+      "id": "1784066855070-manual",
+      "label": "Run 15",
+      "personaRef": "../02-personas/01-active-member.gen-e2.persona"
+    },
+    {
+      "id": "1784067049500-manual",
+      "label": "Run 16",
+      "personaRef": "../02-personas/01-active-member.gen-e2.persona",
+      "recording": {
+        "startedAt": "2026-07-14T22:10:55.621Z",
+        "endedAt": "2026-07-14T22:11:49.293Z",
+        "outcome": "succeeded",
+        "transcriptUri": "../../.gen-e2/usertests/1784067055620-02-jordan-book-a-class/transcript.jsonl",
+        "framesDir": "../../.gen-e2/usertests/1784067055620-02-jordan-book-a-class/frames"
+      }
+    },
+    {
+      "id": "1784067136818-manual",
+      "label": "Run 17",
+      "personaRef": "../02-personas/01-active-member.gen-e2.persona"
+    },
+    {
+      "id": "1784067543677-manual",
+      "label": "Run 18",
+      "personaRef": "../02-personas/01-active-member.gen-e2.persona",
+      "recording": {
+        "startedAt": "2026-07-14T22:19:11.228Z",
+        "endedAt": "2026-07-14T22:19:54.673Z",
+        "outcome": "succeeded",
+        "transcriptUri": "../../.gen-e2/usertests/1784067551228-02-jordan-book-a-class/transcript.jsonl",
+        "framesDir": "../../.gen-e2/usertests/1784067551228-02-jordan-book-a-class/frames"
+      }
+    },
+    {
+      "id": "1784067780470-manual",
+      "label": "Run 19",
+      "personaRef": "../02-personas/01-active-member.gen-e2.persona",
+      "recording": {
+        "startedAt": "2026-07-14T22:23:07.953Z",
+        "endedAt": "2026-07-14T22:24:13.059Z",
+        "outcome": "succeeded",
+        "transcriptUri": "../../.gen-e2/usertests/1784067787953-02-jordan-book-a-class/transcript.jsonl",
+        "framesDir": "../../.gen-e2/usertests/1784067787953-02-jordan-book-a-class/frames"
+      }
+    },
+    {
+      "id": "1784067899440-manual",
+      "label": "Run 20",
+      "personaRef": "../02-personas/01-active-member.gen-e2.persona",
+      "recording": {
+        "startedAt": "2026-07-14T22:25:05.841Z",
+        "endedAt": "2026-07-14T22:26:14.209Z",
+        "outcome": "succeeded",
+        "transcriptUri": "../../.gen-e2/usertests/1784067905840-02-jordan-book-a-class/transcript.jsonl",
+        "framesDir": "../../.gen-e2/usertests/1784067905840-02-jordan-book-a-class/frames"
+      }
+    },
+    {
+      "id": "1784067981112-manual",
+      "label": "Run 21",
+      "personaRef": "../02-personas/01-active-member.gen-e2.persona",
+      "recording": {
+        "startedAt": "2026-07-14T22:26:26.989Z",
+        "endedAt": "2026-07-14T22:27:12.839Z",
+        "outcome": "succeeded",
+        "transcriptUri": "../../.gen-e2/usertests/1784067986989-02-jordan-book-a-class/transcript.jsonl",
+        "framesDir": "../../.gen-e2/usertests/1784067986989-02-jordan-book-a-class/frames"
+      }
+    },
+    {
+      "id": "1784068079644-manual",
+      "label": "Run 22",
+      "personaRef": "../02-personas/01-active-member.gen-e2.persona",
+      "recording": {
+        "startedAt": "2026-07-14T22:28:07.358Z",
+        "endedAt": "2026-07-14T22:29:11.518Z",
+        "outcome": "succeeded",
+        "transcriptUri": "../../.gen-e2/usertests/1784068087358-02-jordan-book-a-class/transcript.jsonl",
+        "framesDir": "../../.gen-e2/usertests/1784068087358-02-jordan-book-a-class/frames"
+      }
+    }
+  ],
+  "recording": {
+    "startedAt": "2026-07-14T22:28:07.358Z",
+    "endedAt": "2026-07-14T22:29:11.518Z",
+    "outcome": "succeeded",
+    "transcriptUri": "../../.gen-e2/usertests/1784068087358-02-jordan-book-a-class/transcript.jsonl",
+    "framesDir": "../../.gen-e2/usertests/1784068087358-02-jordan-book-a-class/frames"
+  }
+}

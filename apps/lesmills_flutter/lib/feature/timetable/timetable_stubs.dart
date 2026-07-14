@@ -6,13 +6,13 @@ import 'timetable_model.dart';
 /// previews and tests render identically every run.
 abstract final class TimetableStubs {
   static const List<TimetableDay> _days = [
-    TimetableDay(weekday: 'Wed', dayNumber: 18, isSelected: true),
-    TimetableDay(weekday: 'Thu', dayNumber: 19),
-    TimetableDay(weekday: 'Fri', dayNumber: 20),
-    TimetableDay(weekday: 'Sat', dayNumber: 21),
-    TimetableDay(weekday: 'Sun', dayNumber: 22),
-    TimetableDay(weekday: 'Mon', dayNumber: 23),
-    TimetableDay(weekday: 'Tue', dayNumber: 24),
+    TimetableDay(weekday: 'Mon', dayNumber: 20, isSelected: true),
+    TimetableDay(weekday: 'Tue', dayNumber: 21),
+    TimetableDay(weekday: 'Wed', dayNumber: 22),
+    TimetableDay(weekday: 'Thu', dayNumber: 23),
+    TimetableDay(weekday: 'Fri', dayNumber: 24),
+    TimetableDay(weekday: 'Sat', dayNumber: 25),
+    TimetableDay(weekday: 'Sun', dayNumber: 26),
   ];
 
   static const List<TimetableClass> _classes = [
@@ -83,6 +83,44 @@ abstract final class TimetableStubs {
       availableCount: 2,
     ),
     TimetableClass(
+      id: 'bodycombat-1200',
+      time: '12:00pm',
+      duration: '55 mins',
+      name: 'BodyCombat',
+      studio: 'Studio 1',
+      instructor: 'Maya Chen',
+      bookingState: ClassBookingState.available,
+      availableCount: 5,
+    ),
+    TimetableClass(
+      id: 'rpm-1300',
+      time: '1:00pm',
+      duration: '45 mins',
+      name: 'RPM',
+      studio: 'Cycle Studio',
+      instructor: 'Laura Rossi',
+      bookingState: ClassBookingState.available,
+    ),
+    TimetableClass(
+      id: 'grit-1530',
+      time: '3:30pm',
+      duration: '30 mins',
+      name: 'GRIT Strength',
+      studio: 'Functional Studio',
+      instructor: 'Nats Levi',
+      bookingState: ClassBookingState.available,
+      availableCount: 3,
+    ),
+    TimetableClass(
+      id: 'yoga-1630',
+      time: '4:30pm',
+      duration: '55 mins',
+      name: 'Yoga',
+      studio: 'Studio 2',
+      instructor: 'Yogini Nimata Morarji',
+      bookingState: ClassBookingState.available,
+    ),
+    TimetableClass(
       id: 'thetrip-1820',
       time: '6:20pm',
       duration: '45 mins',
@@ -90,6 +128,16 @@ abstract final class TimetableStubs {
       studio: 'Cycle Studio',
       instructor: 'Otto Prodan',
       bookingState: ClassBookingState.booked,
+    ),
+    TimetableClass(
+      id: 'bodypump-1900',
+      time: '7:00pm',
+      duration: '55 mins',
+      name: 'BodyPump',
+      studio: 'Studio 2',
+      instructor: 'Sean Oosthuysen',
+      bookingState: ClassBookingState.available,
+      availableCount: 10,
     ),
   ];
 

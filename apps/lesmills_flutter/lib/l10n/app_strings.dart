@@ -93,6 +93,9 @@ abstract final class AppStrings {
   static const String timetableNight = 'Night';
   static const String timetableBookNow = 'Book now';
   static const String timetableBooked = 'Booked';
+  static const String timetableConfirmTitle = 'Confirm booking';
+  static const String timetableConfirmCta = 'Confirm';
+  static const String cancel = 'Cancel';
   static String timetableAvailable(int count) => '$count available';
   static const String timetableFull = 'Full';
   static const String timetableEmptyTitle = 'No classes scheduled';

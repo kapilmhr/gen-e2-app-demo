@@ -1,0 +1,119 @@
+{
+  "meta": {
+    "name": "Jordan Mitchell",
+    "title": "The Committed Club Member",
+    "summary": "Jordan is a 31-year-old marketing manager who joined a Les Mills club 18 months ago to stay consistent with group fitness. They rely on the app to plan their week around classes, track their activity streaks, and discover new workout formats when their usual routine gets stale.",
+    "owner": "Product Team",
+    "date": "2026-07-06",
+    "version": "v1.0"
+  },
+  "demographics": {
+    "fields": [
+      { "label": "Age", "value": "31", "isPrimary": true },
+      { "label": "Location", "value": "Auckland, New Zealand", "isPrimary": true },
+      { "label": "Occupation", "value": "Marketing Manager", "isPrimary": true },
+      { "label": "Tech Level", "value": "High", "isPrimary": true, "type": "select", "options": ["Low", "Medium", "High"] },
+      { "label": "Income", "value": "NZD $75,000–$95,000", "isPrimary": false },
+      { "label": "Education", "value": "Bachelor's degree", "isPrimary": false },
+      { "label": "Family", "value": "Single, no dependants", "isPrimary": false },
+      { "label": "Gender", "value": "Non-binary", "isPrimary": false, "type": "select", "options": ["", "Female", "Male", "Non-binary", "Prefer not to say"] }
+    ]
+  },
+  "sections": [
+    {
+      "id": "goals",
+      "label": "Goals",
+      "icon": "🎯",
+      "description": "What this persona wants to achieve",
+      "items": [
+        "Book group fitness classes quickly without scrolling through a cluttered timetable — assumption",
+        "Keep a visible weekly activity streak to stay motivated between sessions — assumption",
+        "Discover new class formats (HIIT, yoga, cycle) when their usual picks are full — assumption",
+        "Track progress over time to see tangible results from consistent training — assumption",
+        "Balance work-week schedule with class availability, especially early morning and lunchtime slots — assumption"
+      ]
+    },
+    {
+      "id": "pain-points",
+      "label": "Pain Points",
+      "icon": "❌",
+      "description": "Current frustrations and challenges",
+      "items": [
+        "Preferred classes fill up fast and there's no proactive notification when a spot opens — assumption",
+        "Hard to discover new class types without manually browsing — assumption",
+        "Activity history feels disconnected from goals; hard to see meaningful progress — assumption",
+        "Timetable filtering is too coarse — can't easily narrow to time of day and class type simultaneously — assumption",
+        "Switching between booking a class and exploring content requires too many taps — assumption"
+      ]
+    },
+    {
+      "id": "current-practices",
+      "label": "Current Practices",
+      "icon": "🔄",
+      "description": "What they currently do to address their needs",
+      "items": [
+        "Opens the timetable every Sunday evening to plan and book the coming week's classes",
+        "Screenshots the timetable and saves it to the camera roll as a manual weekly plan",
+        "Follows Les Mills social channels for workout inspiration when the app discovery feels limited",
+        "Uses Apple Health / Google Fit as a secondary source for activity data",
+        "Checks the club's Instagram for new class announcements before the app is updated"
+      ]
+    },
+    {
+      "id": "behaviours",
+      "label": "Behaviours",
+      "icon": "👤",
+      "description": "Observable patterns and habits",
+      "items": [
+        "Trains 3–4 times per week, preferring morning (6–7 am) or lunchtime (12–1 pm) sessions",
+        "Uses the app daily in short bursts — opens to check bookings or activity summary, rarely browses for more than 2 min",
+        "Responds well to visual progress cues (streaks, rings, badges) — has Apple Watch connected",
+        "Likely to cancel a booking if they find a better-rated class in the same slot",
+        "Shares class completions to Instagram Stories 1–2× per week"
+      ]
+    },
+    {
+      "id": "touchpoints",
+      "label": "Touchpoints",
+      "icon": "📱",
+      "description": "Apps, devices, and services they use",
+      "items": [
+        "Wearables: Apple Watch Series 9 — tracks workouts, rings, heart rate",
+        "Fitness apps: Apple Fitness+, Strava (running), Les Mills+ for on-demand",
+        "Productivity: Google Calendar, Notion — plans workouts alongside work commitments",
+        "Social: Instagram, TikTok — discovers fitness trends and class formats",
+        "Music: Spotify — uses Les Mills class playlists during in-gym sessions"
+      ]
+    }
+  ],
+  "quote": "I want to open the app, see what's on today, book it, and get to the gym — it shouldn't take more than 30 seconds.",
+  "mindset": {
+    "personality": [
+      "Goal-oriented — tracks progress and gets satisfaction from measurable outcomes",
+      "Routine-driven — builds habits around consistent weekly schedules",
+      "Socially motivated — enjoys group classes for accountability and energy",
+      "Tech-savvy — expects apps to be fast, intuitive, and integrated with their ecosystem"
+    ],
+    "values": [
+      "Consistency over intensity — showing up regularly matters more than single heroic efforts",
+      "Efficiency — wants to spend time training, not planning",
+      "Community — values being part of a group and the energy of a live class",
+      "Transparency — wants to see real progress data, not vanity metrics"
+    ],
+    "motivations": [
+      "Maintaining mental health and managing work-related stress through exercise",
+      "Building a visible, trackable streak that reinforces the habit loop",
+      "Being part of a fitness community that holds them accountable"
+    ],
+    "attitudes": [
+      "Optimistic about fitness tech but frustrated when it adds steps instead of removing them",
+      "Loyal to Les Mills classes but willing to supplement with at-home content on rest days",
+      "Values group energy but not dependent on it — will do solo sessions if the timetable doesn't align"
+    ]
+  },
+  "notes": [
+    "Persona is assumption-based — all items tagged 'assumption' should be validated through member interviews or app analytics before use in design decisions",
+    "The quote is synthesised from user story language in the stories; validate with real interview data",
+    "Consider a secondary persona for casual/irregular members who use the app for discovery only — different booking urgency and streak motivation"
+  ]
+}

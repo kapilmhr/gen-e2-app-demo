@@ -1,5 +1,9 @@
 import 'package:flutter/foundation.dart';
 
+// Sentinel used by TimetableClass.copyWith to distinguish "not provided" from
+// an explicit null for the optional [availableCount] field.
+const Object _sentinel = Object();
+
 /// Which top-level timetable view is shown.
 enum TimetableSection { clubTimetable, myBookings }
 
@@ -60,6 +64,29 @@ class TimetableClass {
 
   /// Remaining spots; shown only when known and the class is bookable.
   final int? availableCount;
+
+  TimetableClass copyWith({
+    String? id,
+    String? time,
+    String? duration,
+    String? name,
+    String? studio,
+    String? instructor,
+    ClassBookingState? bookingState,
+    Object? availableCount = _sentinel,
+  }) =>
+      TimetableClass(
+        id: id ?? this.id,
+        time: time ?? this.time,
+        duration: duration ?? this.duration,
+        name: name ?? this.name,
+        studio: studio ?? this.studio,
+        instructor: instructor ?? this.instructor,
+        bookingState: bookingState ?? this.bookingState,
+        availableCount: availableCount == _sentinel
+            ? this.availableCount
+            : availableCount as int?,
+      );
 
   @override
   bool operator ==(Object other) =>

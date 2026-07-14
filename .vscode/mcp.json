@@ -3,6 +3,15 @@
 		"Figma Dev Mode MCP": {
 			"url": "http://127.0.0.1:3845/mcp",
 			"type": "http"
+		},
+		"maestro": {
+			"type": "stdio",
+			"command": "/Users/joshuagavinvalerie/.maestro/bin/maestro",
+			"args": [
+				"mcp",
+				"--working-dir",
+				"${workspaceFolder}/maestro"
+			]
 		}
 	},
 	"inputs": []

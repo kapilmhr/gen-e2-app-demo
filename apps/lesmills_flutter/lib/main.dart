@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/semantics.dart';
 
 import 'feature/shell/app_shell.dart';
 import 'feature/splash/splash_model.dart';
@@ -6,7 +7,16 @@ import 'feature/splash/splash_screen.dart';
 import 'l10n/app_strings.dart';
 import 'theme/app_theme.dart';
 
+// Top-level reference keeps the handle alive for the process lifetime so the
+// Flutter semantics tree stays populated for Maestro and other a11y tooling.
+// ignore: unused_element
+SemanticsHandle? _semanticsHandle;
+
 void main() {
+  WidgetsFlutterBinding.ensureInitialized();
+  // Force the Flutter semantics tree to be built so Maestro (and other
+  // accessibility tooling) can read UI elements on the iOS simulator.
+  _semanticsHandle = SemanticsBinding.instance.ensureSemantics();
   runApp(const LesMillsApp());
 }
 

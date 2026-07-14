@@ -1,0 +1,18 @@
+{
+  "terminal.integrated.env.osx": {
+    "PATH": "${env:PATH}:/Users/joshuagavinvalerie/.maestro/bin:/Users/joshuagavinvalerie/.pub-cache/bin"
+  },
+  "mcp": {
+    "servers": {
+      "patrol": {
+        "type": "stdio",
+        "command": "dart",
+        "args": ["run", "patrol_mcp"],
+        "cwd": "${workspaceFolder}/apps/lesmills_flutter",
+        "env": {
+          "PROJECT_ROOT": "${workspaceFolder}/apps/lesmills_flutter"
+        }
+      }
+    }
+  }
+}
