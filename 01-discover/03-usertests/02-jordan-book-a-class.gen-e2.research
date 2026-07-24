@@ -1,0 +1,88 @@
+{
+  "meta": {
+    "title": "Can a user book a class via the Timetable tab within 60 seconds?",
+    "researcher": "AI Persona Test (gen-e2)",
+    "lastUpdated": "2026-07-14",
+    "cycle": "",
+    "participants": 1
+  },
+  "groups": [
+    {
+      "id": "navigation-efficiency",
+      "title": "Navigation Efficiency",
+      "description": "The user navigated to the Timetable tab and located the target class without hesitation or wrong turns.",
+      "insights": [
+        {
+          "id": "tab-bar-discoverable",
+          "title": "Timetable tab immediately visible and tappable",
+          "summary": "The persona moved directly to the Timetable tab in a single action with no exploration, indicating the bottom navigation label and icon are sufficiently clear. 'I want to book a class fast — let me jump straight to the Timetable tab.'",
+          "severity": "info",
+          "references": []
+        },
+        {
+          "id": "default-state-aligned-with-intent",
+          "title": "Default day and filter matched user's booking intent",
+          "summary": "Monday 20 pre-selected with the Morning filter active meant the persona saw relevant content instantly, removing any need to adjust context before acting.",
+          "severity": "info",
+          "references": []
+        }
+      ]
+    },
+    {
+      "id": "booking-flow-clarity",
+      "title": "Booking Flow Clarity",
+      "description": "The two-step booking interaction (Book now CTA → confirmation sheet) was clear and completed without confusion.",
+      "insights": [
+        {
+          "id": "book-now-cta-prominent",
+          "title": "Book now CTA visible on class card",
+          "summary": "The persona tapped the CTA immediately after reading the class, suggesting adequate visual prominence on the class card.",
+          "severity": "info",
+          "references": []
+        },
+        {
+          "id": "confirmation-sheet-purpose-clear",
+          "title": "Confirmation sheet purpose understood instantly",
+          "summary": "Without pause the persona identified the sheet and its action: 'The confirm booking sheet is up for the Ceremony class. I'll hit Confirm to lock it in.' No ambiguity about what the sheet was asking.",
+          "severity": "info",
+          "references": []
+        }
+      ]
+    },
+    {
+      "id": "feedback-and-confirmation",
+      "title": "Feedback & Confirmation",
+      "description": "Post-booking feedback was immediate and unambiguous, leaving the user fully satisfied.",
+      "insights": [
+        {
+          "id": "booked-badge-legible",
+          "title": "Green 'Booked' badge communicates success clearly",
+          "summary": "The persona correctly interpreted the visual state change without any doubt: 'The Ceremony class now shows a green Booked badge — my booking went through.' The colour and label combination removed any need for a separate success screen.",
+          "severity": "info",
+          "references": []
+        }
+      ]
+    },
+    {
+      "id": "successful-moments",
+      "title": "Successful Moments",
+      "description": "The end-to-end task was completed in three taps with consistent confidence and no observable friction.",
+      "insights": [
+        {
+          "id": "task-completed-under-time-limit",
+          "title": "Full booking achieved in three taps",
+          "summary": "The persona completed the scenario — open timetable, tap Book now, confirm — in three interactions, well within the 60-second target, demonstrating a streamlined happy path.",
+          "severity": "info",
+          "references": []
+        },
+        {
+          "id": "emotional-tone-positive-throughout",
+          "title": "Confidence maintained across every step",
+          "summary": "Emotional state was 'confident' for every action and resolved to 'satisfied' at completion, with no moments of hesitation, frustration, or uncertainty recorded.",
+          "severity": "info",
+          "references": []
+        }
+      ]
+    }
+  ]
+}
