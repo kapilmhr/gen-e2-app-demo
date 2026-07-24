@@ -1,0 +1,43 @@
+{
+  "meta": {
+    "name": "Jordan books a morning class from the timetable",
+    "title": "Can a committed member find and book an available morning class without friction?",
+    "summary": "Jordan opens the app cold, navigates to the Timetable tab, and attempts to book any available morning class. The test observes whether the timetable surfaces the right information at a glance, whether the date strip and time-of-day filter are immediately understandable, and whether the booking CTA and confirmation flow are clear enough that Jordan feels confident a spot has been secured — all within a natural, unscripted interaction.",
+    "owner": "Product Team",
+    "date": "2026-07-24",
+    "version": "v1.0",
+    "status": "draft"
+  },
+  "inputs": {
+    "personaRef": "../02-personas/01-active-member.gen-e2.persona",
+    "scenario": {
+      "goal": "Open the app and book yourself into any available morning group fitness class for today.",
+      "successHints": [
+        "The Timetable tab is reachable from the bottom navigation bar in one tap",
+        "A time-of-day filter (Morning / Lunch / Afternoon / Night) narrows the class list",
+        "Each class card shows availability (e.g. '8 available') and a Book CTA",
+        "Tapping Book opens a confirmation sheet; tapping Confirm completes the booking",
+        "A visible confirmation state (e.g. booked badge, success message, or booking reference) signals success"
+      ]
+    },
+    "context": {
+      "references": [
+        "../02-personas/01-active-member.gen-e2.persona",
+        "../../docs/timetable/timetable.gen-e2.story.md"
+      ]
+    }
+  },
+  "target": {
+    "kind": "flutter",
+    "appId": "com.example.lesmillsFlutter",
+    "platform": "ios",
+    "projectRoot": "../../apps/lesmills_flutter"
+  },
+  "runner": {
+    "kind": "maestro",
+    "options": {
+      "stepCap": 25,
+      "timeoutMs": 240000
+    }
+  }
+}

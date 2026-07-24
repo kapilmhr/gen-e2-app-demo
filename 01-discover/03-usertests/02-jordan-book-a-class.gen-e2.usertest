@@ -45,11 +45,11 @@
       "label": "Run 4",
       "personaRef": "../02-personas/01-active-member.gen-e2.persona",
       "recording": {
-        "startedAt": "2026-07-14T09:57:46.312Z",
-        "endedAt": "2026-07-14T09:58:36.400Z",
+        "startedAt": "2026-07-24T00:04:14.443Z",
+        "endedAt": "2026-07-24T00:04:58.546Z",
         "outcome": "succeeded",
-        "transcriptUri": "../../.gen-e2/usertests/1784023066311-02-jordan-book-a-class/transcript.jsonl",
-        "framesDir": "../../.gen-e2/usertests/1784023066311-02-jordan-book-a-class/frames"
+        "transcriptUri": "../../.gen-e2/usertests/1784851454442-02-jordan-book-a-class/transcript.jsonl",
+        "framesDir": "../../.gen-e2/usertests/1784851454442-02-jordan-book-a-class/frames"
       }
     },
     {
@@ -278,14 +278,19 @@
         "transcriptUri": "../../.gen-e2/usertests/1784161569520-02-jordan-book-a-class/transcript.jsonl",
         "framesDir": "../../.gen-e2/usertests/1784161569520-02-jordan-book-a-class/frames"
       }
+    },
+    {
+      "id": "1784852492851-manual",
+      "label": "Run 25",
+      "personaRef": "../02-personas/01-active-member.gen-e2.persona"
     }
   ],
   "recording": {
-    "startedAt": "2026-07-24T00:00:58.847Z",
-    "endedAt": "2026-07-24T00:01:44.341Z",
+    "startedAt": "2026-07-24T00:04:14.443Z",
+    "endedAt": "2026-07-24T00:04:58.546Z",
     "outcome": "succeeded",
-    "transcriptUri": "../../.gen-e2/usertests/1784851258843-02-jordan-book-a-class/transcript.jsonl",
-    "framesDir": "../../.gen-e2/usertests/1784851258843-02-jordan-book-a-class/frames"
+    "transcriptUri": "../../.gen-e2/usertests/1784851454442-02-jordan-book-a-class/transcript.jsonl",
+    "framesDir": "../../.gen-e2/usertests/1784851454442-02-jordan-book-a-class/frames"
   },
   "insightsRef": "./02-jordan-book-a-class.gen-e2.research"
 }
